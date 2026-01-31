@@ -3,59 +3,71 @@ import { Link } from "react-router-dom";
 
 const BookNow1 = () => {
   return (
-    <div style={styles.page}>
-      <h1 style={styles.title}>Book Your Appointment</h1>
-      <p style={styles.subtitle}>
+    <div className="page min-vh-100 p-4" style={{ backgroundColor: "#f6f0e1", fontFamily: "Georgia, serif" }}>
+      <h1 className="text-center mb-2" style={{ color: "#7b4a3f" }}>Book Your Appointment</h1>
+      <p className="text-center mb-5" style={{ color: "#7a142c", fontSize: "14px" }}>
         Select your service, choose a time, and we'll take care of the rest.
       </p>
 
-      <div style={styles.steps}>
-        <div style={styles.stepActive}>1</div>
-        <div style={styles.line}></div>
-        <div style={styles.stepInactive}>2</div>
-        <div style={styles.line}></div>
-        <div style={styles.stepInactive}>3</div>
-        <div style={styles.line}></div>
-        <div style={styles.stepInactive}>4</div>
+      <div className="d-flex justify-content-center align-items-center mb-5">
+        <div className="d-flex align-items-center justify-content-center fw-bold rounded-circle text-white" style={{ width: "32px", height: "32px", backgroundColor: "#7a142c" }}>1</div>
+        <div style={{ width: "45px", height: "3px", backgroundColor: "#f0e2c4" }}></div>
+        <div className="d-flex align-items-center justify-content-center fw-bold rounded-circle" style={{ width: "32px", height: "32px", backgroundColor: "#f0e2c4", color: "#7b4a3f" }}>2</div>
+        <div style={{ width: "45px", height: "3px", backgroundColor: "#f0e2c4" }}></div>
+        <div className="d-flex align-items-center justify-content-center fw-bold rounded-circle" style={{ width: "32px", height: "32px", backgroundColor: "#f0e2c4", color: "#7b4a3f" }}>3</div>
+        <div style={{ width: "45px", height: "3px", backgroundColor: "#f0e2c4" }}></div>
+        <div className="d-flex align-items-center justify-content-center fw-bold rounded-circle" style={{ width: "32px", height: "32px", backgroundColor: "#f0e2c4", color: "#7b4a3f" }}>4</div>
       </div>
 
-      <div style={styles.card}>
-        <p style={styles.helper}>
+      <div className="card mx-auto p-4 p-md-5 border-0 shadow" style={{ maxWidth: "900px", backgroundColor: "#f7edd2", borderRadius: "16px" }}>
+        <p className="mb-4" style={{ color: "#7a142c", fontSize: "14px" }}>
           Choose your wash package and vehicle type
         </p>
 
-        <h3 style={styles.sectionTitle}>Select Services</h3>
+        <h3 className="h5 mb-3" style={{ color: "#7b4a3f" }}>Select Services</h3>
 
-        <div style={styles.serviceGrid}>
-          <div style={styles.serviceBox}>
-            <strong>Basic Wash</strong>
-            <span>30 min</span>
+        <div className="row g-3 mb-4">
+          <div className="col-12 col-md-6">
+            <div className="border rounded-3 p-3 d-flex flex-column gap-1" style={{ borderColor: "#7a142c", color: "#7a142c" }}>
+              <strong>Basic Wash</strong>
+              <span>30 min</span>
+            </div>
           </div>
-          <div style={styles.serviceBox}>
-            <strong>Premium Wash</strong>
-            <span>1.5+ hours</span>
+          <div className="col-12 col-md-6">
+            <div className="border rounded-3 p-3 d-flex flex-column gap-1" style={{ borderColor: "#7a142c", color: "#7a142c" }}>
+              <strong>Premium Wash</strong>
+              <span>1.5+ hours</span>
+            </div>
           </div>
-          <div style={styles.serviceBox}>
-            <strong>Ultimate Detail</strong>
-            <span>3+ hours</span>
+          <div className="col-12 col-md-6">
+            <div className="border rounded-3 p-3 d-flex flex-column gap-1" style={{ borderColor: "#7a142c", color: "#7a142c" }}>
+              <strong>Ultimate Detail</strong>
+              <span>3+ hours</span>
+            </div>
           </div>
-          <div style={styles.serviceBox}>
-            <strong>Interior Cleaning</strong>
-            <span>45 min</span>
+          <div className="col-12 col-md-6">
+            <div className="border rounded-3 p-3 d-flex flex-column gap-1" style={{ borderColor: "#7a142c", color: "#7a142c" }}>
+              <strong>Interior Cleaning</strong>
+              <span>45 min</span>
+            </div>
           </div>
-          <div style={styles.serviceBox}>
-            <strong>Ceramic Coating</strong>
-            <span>4+ hours</span>
+          <div className="col-12 col-md-6">
+            <div className="border rounded-3 p-3 d-flex flex-column gap-1" style={{ borderColor: "#7a142c", color: "#7a142c" }}>
+              <strong>Ceramic Coating</strong>
+              <span>4+ hours</span>
+            </div>
           </div>
-          <div style={styles.serviceBox}>
-            <strong>Engine Wash</strong>
-            <span>30 min</span>
+          <div className="col-12 col-md-6">
+            <div className="border rounded-3 p-3 d-flex flex-column gap-1" style={{ borderColor: "#7a142c", color: "#7a142c" }}>
+              <strong>Engine Wash</strong>
+              <span>30 min</span>
+            </div>
           </div>
         </div>
 
-        <h3 style={styles.sectionTitle}>Vehicle Type</h3>
+        <h3 className="h5 mb-3" style={{ color: "#7b4a3f" }}>Vehicle Type</h3>
 
-        <div style={styles.vehicleGrid}>
+        <div className="row g-3 mb-5">
           {[
             "Sedan",
             "SUV / Crossover",
@@ -64,23 +76,23 @@ const BookNow1 = () => {
             "Sports Car",
             "Luxury Vehicle",
           ].map((v) => (
-            <div key={v} style={styles.vehicleBox}>
-              <span style={styles.carIcon}>🚗</span>
-              <span>{v}</span>
+            <div key={v} className="col-6 col-md-4">
+              <div className="border rounded-3 p-3 text-center d-flex flex-column gap-2" style={{ borderColor: "#7a142c", color: "#7a142c", fontSize: "14px" }}>
+                <span style={{ fontSize: "22px" }}>🚗</span>
+                <span>{v}</span>
+              </div>
             </div>
           ))}
         </div>
 
-        <div style={styles.buttons}>
-          <div style={styles.buttons}>
-  <Link to="/" style={{ textDecoration: "none" }}>
-    <button style={styles.cancelBtn}>Cancel</button>
-  </Link>
+        <div className="d-flex justify-content-between align-items-center">
+          <Link to="/" className="text-decoration-none">
+            <button className="btn fw-bold px-5 py-2 rounded-pill" style={{ backgroundColor: "#7a142c", color: "#fff" }}>Cancel</button>
+          </Link>
 
-  <Link to="/booknow2" style={{ textDecoration: "none" }}>
-    <button style={styles.continueBtn}>Continue</button>
-  </Link>
-</div>
+          <Link to="/booknow2" className="text-decoration-none">
+            <button className="btn fw-bold px-5 py-2 rounded-pill" style={{ backgroundColor: "#7a142c", color: "#fff" }}>Continue</button>
+          </Link>
         </div>
       </div>
     </div>
@@ -88,148 +100,3 @@ const BookNow1 = () => {
 };
 
 export default BookNow1;
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    backgroundColor: "#f6f0e1",
-    padding: "40px",
-    fontFamily: "Georgia, serif",
-  },
-
-  title: {
-    textAlign: "center",
-    color: "#7b4a3f",
-    marginBottom: "8px",
-  },
-
-  subtitle: {
-    textAlign: "center",
-    color: "#7a142c",
-    fontSize: "14px",
-    marginBottom: "30px",
-  },
-
-  steps: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: "40px",
-  },
-
-  stepActive: {
-    width: "32px",
-    height: "32px",
-    borderRadius: "50%",
-    backgroundColor: "#7a142c",
-    color: "#fff",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: "bold",
-  },
-
-  stepInactive: {
-    width: "32px",
-    height: "32px",
-    borderRadius: "50%",
-    backgroundColor: "#f0e2c4",
-    color: "#7b4a3f",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: "bold",
-  },
-
-  line: {
-    width: "45px",
-    height: "3px",
-    backgroundColor: "#f0e2c4",
-  },
-
-  card: {
-    maxWidth: "900px",
-    margin: "auto",
-    backgroundColor: "#f7edd2",
-    padding: "40px",
-    borderRadius: "16px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-  },
-
-  helper: {
-    color: "#7a142c",
-    fontSize: "14px",
-    marginBottom: "20px",
-  },
-
-  sectionTitle: {
-    color: "#7b4a3f",
-    marginBottom: "15px",
-  },
-
-  serviceGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "20px",
-    marginBottom: "30px",
-  },
-
-  serviceBox: {
-    border: "1px solid #7a142c",
-    borderRadius: "12px",
-    padding: "15px",
-    color: "#7a142c",
-    display: "flex",
-    flexDirection: "column",
-    gap: "4px",
-  },
-
-  vehicleGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "20px",
-    marginBottom: "35px",
-  },
-
-  vehicleBox: {
-    border: "1px solid #7a142c",
-    borderRadius: "14px",
-    padding: "20px",
-    textAlign: "center",
-    color: "#7a142c",
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-    fontSize: "14px",
-  },
-
-  carIcon: {
-    fontSize: "22px",
-  },
-
-  buttons: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-
-  cancelBtn: {
-    backgroundColor: "#7a142c",
-    color: "#fff",
-    border: "none",
-    padding: "14px 40px",
-    borderRadius: "25px",
-    fontWeight: "bold",
-    cursor: "pointer",
-  },
-
-  continueBtn: {
-    backgroundColor: "#7a142c",
-    color: "#fff",
-    border: "none",
-    padding: "14px 40px",
-    borderRadius: "25px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    marginLeft: "550px",
-  },
-};

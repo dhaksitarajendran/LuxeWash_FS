@@ -5,38 +5,40 @@ const EditCard = () => {
 
   return (
     <>
-      <style>{`
-        .wrapper { background:#f6efdf; min-height:100vh; padding:40px; }
-        .box {
-          max-width:500px;
-          margin:auto;
-          background:#fff;
-          padding:30px;
-          border-radius:18px;
-        }
-        input {
-          width:100%;
-          padding:12px;
-          margin-bottom:16px;
-          border-radius:10px;
-        }
-        .danger { background:#b30000; }
-      `}</style>
+      <div className="wrapper min-vh-100 p-4" style={{ background: '#f6efdf' }}>
+        <div className="box card border-0 shadow-sm mx-auto p-4 rounded-4" style={{ maxWidth: '500px', background: '#fff' }}>
+          <h2 className="mb-4 fw-bold" style={{ color: '#7b1e2b' }}>Edit Card</h2>
 
-      <div className="wrapper">
-        <div className="box">
-          <h2>Edit Card</h2>
+          <div className="mb-3">
+            <input
+              className="form-control p-3 border rounded-3"
+              value="•••• 4242"
+              disabled
+              style={{ background: '#f8f9fa' }}
+            />
+          </div>
 
-          <input value="•••• 4242" disabled />
-          <input placeholder="Expiry Date" />
+          <div className="mb-4">
+            <input
+              className="form-control p-3 border rounded-3"
+              placeholder="Expiry Date"
+              style={{ background: '#fff' }}
+            />
+          </div>
 
-          <button onClick={() => navigate("/payment-methods")}>
+          <button
+            className="btn w-100 py-3 fw-bold rounded-3 text-white border-0 mb-3"
+            style={{ background: '#7b1e2b' }}
+            onClick={() => navigate("/payment-methods")}
+          >
             Update Card
           </button>
 
-          <br /><br />
-
-          <button className="danger" onClick={() => navigate("/delete-card")}>
+          <button
+            className="btn w-100 py-3 fw-bold rounded-3 text-white border-0"
+            style={{ background: '#b30000' }}
+            onClick={() => navigate("/delete-card")}
+          >
             Delete Card
           </button>
         </div>

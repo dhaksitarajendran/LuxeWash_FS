@@ -10,170 +10,47 @@ function EmployeeTask() {
 
   return (
     <>
-      <div className="task-container">
-        <aside className="task-sidebar">
-          <nav className="menu">
-            <Link to="/employee-dashboard">Dashboard</Link>
-            <Link to="/employee-impact">Your Impact</Link>
-            <Link to="/employee-tasks" className="active">Tasks</Link>
-            <Link to="/settings">Settings</Link>
-            <Link to="/editprofile">Profile</Link>
-            <Link to="/login" className="logout">Logout</Link>
+      <div className="task-container min-vh-100 d-flex flex-column flex-md-row" style={{ background: '#f8f3de' }}>
+        <aside className="task-sidebar text-white p-3 d-none d-md-block" style={{ width: '250px', background: '#7b1e2b' }}>
+          <nav className="nav flex-column gap-2">
+            <Link to="/employee-dashboard" className="nav-link text-white hover-bg-opacity-10 rounded-3">Dashboard</Link>
+            <Link to="/employee-impact" className="nav-link text-white hover-bg-opacity-10 rounded-3">Your Impact</Link>
+            <Link to="/employee-tasks" className="nav-link text-white active bg-white bg-opacity-25 rounded-3 fw-bold">Tasks</Link>
+            <Link to="/settings" className="nav-link text-white hover-bg-opacity-10 rounded-3">Settings</Link>
+            <Link to="/editprofile" className="nav-link text-white hover-bg-opacity-10 rounded-3">Profile</Link>
+            <Link to="/login" className="nav-link text-white hover-bg-opacity-10 rounded-3 mt-4 text-center bg-black bg-opacity-25">Logout</Link>
           </nav>
         </aside>
 
-        <main className="task-main">
-          <h2 className="page-title">My Tasks</h2>
+        <main className="task-main flex-grow-1 p-4">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="fw-bold m-0" style={{ fontFamily: '"Playfair Display", serif', color: '#7b1e2b' }}>My Tasks</h2>
+            <Link to="/employee-dashboard" className="btn btn-sm d-md-none text-white fw-bold" style={{ background: '#7b1e2b' }}>Back</Link>
+          </div>
 
-          <div className="task-list">
+          <div className="task-list d-flex flex-column gap-3">
             {tasks.map((task) => (
-              <div key={task.id} className="task-card">
+              <div key={task.id} className="task-card card border-0 shadow-sm p-3 rounded-4 d-flex flex-row justify-content-between align-items-center">
                 <div>
-                  <h4>{task.title}</h4>
-                  <small>Scheduled at {task.time}</small>
+                  <h4 className="h6 fw-bold mb-1" style={{ color: '#3a2a1f' }}>{task.title}</h4>
+                  <small className="text-muted">Scheduled at {task.time}</small>
                 </div>
 
-                <span className={`status ${task.status.toLowerCase()}`}>
+                <span
+                  className={`badge rounded-pill px-3 py-2 fw-bold text-uppercase ${task.status === 'Completed' ? 'bg-success bg-opacity-25 text-success' : 'bg-warning bg-opacity-25 text-warning'}`}
+                  style={{ fontSize: '12px', letterSpacing: '0.5px' }}
+                >
                   {task.status}
                 </span>
               </div>
             ))}
           </div>
 
-          <Link to="/employee-dashboard" className="back-btn">
+          <Link to="/employee-dashboard" className="text-decoration-none fw-bold d-inline-block mt-4" style={{ color: '#7b1e2b' }}>
             ← Back to Dashboard
           </Link>
         </main>
       </div>
-
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap');
-
-        * {
-          box-sizing: border-box;
-          font-family: "Poppins", sans-serif;
-        }
-
-        body {
-          margin: 0;
-          background: #f8f3de;
-        }
-
-        .task-container {
-          display: flex;
-          min-height: 100vh;
-          background: #f8f3de;
-        }
-
-        .task-sidebar {
-          width: 200px;
-          background: #7b1e2b;
-          padding: 20px 14px;
-        }
-
-        .menu a {
-          display: block;
-          padding: 10px 14px;
-          margin-bottom: 10px;
-          border-radius: 8px;
-          color: #fff;
-          text-decoration: none;
-          font-size: 14px;
-        }
-
-        .menu a:hover,
-        .menu .active {
-          background: rgba(255, 255, 255, 0.22);
-        }
-
-        .menu .logout {
-          margin-top: 32px;
-          background: rgba(0, 0, 0, 0.25);
-          text-align: center;
-        }
-
-        .task-main {
-          flex: 1;
-          padding: 32px;
-        }
-
-        .page-title {
-          font-family: "Playfair Display", serif;
-          font-size: 32px;
-          font-weight: 700;
-          color: #7b1e2b;
-          margin-bottom: 28px;
-        }
-
-        .task-list {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .task-card {
-          background: #fff;
-          padding: 18px 22px;
-          border-radius: 16px;
-          box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .task-card h4 {
-          margin: 0 0 6px 0;
-          font-size: 18px;
-          color: #3a2a1f;
-        }
-
-        .task-card small {
-          color: #777;
-        }
-
-        .status {
-          padding: 6px 14px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
-        }
-
-        .status.pending {
-          background: #fff3cd;
-          color: #856404;
-        }
-
-        .status.completed {
-          background: #d4edda;
-          color: #155724;
-        }
-
-        .back-btn {
-          display: inline-block;
-          margin-top: 28px;
-          text-decoration: none;
-          color: #7b1e2b;
-          font-weight: 600;
-        }
-
-        .back-btn:hover {
-          text-decoration: underline;
-        }
-
-        @media (max-width: 900px) {
-          .task-sidebar {
-            display: none;
-          }
-
-          .task-main {
-            padding: 24px;
-          }
-
-          .page-title {
-            font-size: 26px;
-          }
-        }
-      `}</style>
     </>
   );
 }

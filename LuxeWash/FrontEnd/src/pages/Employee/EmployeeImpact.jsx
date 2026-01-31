@@ -1,268 +1,123 @@
+import { Link } from "react-router-dom";
+
 const EmployeeImpact = () => {
   return (
     <>
-      <style>{`
-        body {
-          background: #f6efdf;
-        }
-
-        .impact-container {
-          max-width: 1200px;
-          margin: auto;
-          padding: 40px 30px;
-        }
-
-        .welcome {
-          margin-bottom: 30px;
-        }
-
-        .welcome small {
-          color: #7b3a3a;
-          font-weight: 600;
-          letter-spacing: 1px;
-        }
-
-        .welcome h1 {
-          margin: 6px 0;
-          color: #5b1b1b;
-        }
-
-        .welcome p {
-          color: #7b3a3a;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: 2fr 1fr;
-          gap: 28px;
-        }
-
-        .card {
-          background: #fff;
-          border-radius: 20px;
-          padding: 24px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        .card-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-
-        .card-header h3 {
-          color: #5b1b1b;
-          margin: 0;
-        }
-
-        .pill {
-          background: #f3d9a4;
-          padding: 6px 14px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #7b1e2b;
-        }
-
-        .stats-row {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 16px;
-        }
-
-        .stat-box {
-          background: #fdf8ef;
-          border-radius: 16px;
-          padding: 18px;
-        }
-
-        .stat-box small {
-          color: #7b3a3a;
-          font-weight: 600;
-        }
-
-        .stat-box h2 {
-          margin: 6px 0 0;
-          color: #7b1e2b;
-        }
-
-        .circles {
-          display: flex;
-          justify-content: space-between;
-          margin: 20px 0;
-        }
-
-        .circle {
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          border: 8px solid #7b1e2b;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 700;
-          color: #7b1e2b;
-          flex-direction: column;
-          font-size: 14px;
-        }
-
-        .progress {
-          margin-top: 10px;
-        }
-
-        .progress-bar {
-          height: 10px;
-          background: #f3d9a4;
-          border-radius: 10px;
-          overflow: hidden;
-        }
-
-        .progress-fill {
-          width: 78%;
-          height: 100%;
-          background: #7b1e2b;
-        }
-
-
-        .impact-metric {
-          background: #fdf8ef;
-          border-radius: 16px;
-          padding: 20px;
-          margin-bottom: 16px;
-        }
-
-        .impact-metric h2 {
-          margin: 0;
-          color: #7b1e2b;
-        }
-
-        
-        .journey {
-          position: relative;
-          margin-top: 20px;
-        }
-
-        .levels {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 30px;
-        }
-
-        .level {
-          text-align: center;
-        }
-
-        .dot {
-          width: 18px;
-          height: 18px;
-          background: #7b1e2b;
-          border-radius: 50%;
-          margin: auto;
-        }
-
-        .inactive {
-          background: #f3d9a4;
-        }
-      `}</style>
-
-      <div className="impact-container">
-     
-        <div className="welcome">
-          <small>WELCOME BACK</small>
-          <h1>Your Impact</h1>
-          <p>Track your performance and work contribution</p>
-        </div>
-
-        <div className="grid">
-          <div className="card">
-            <div className="card-header">
-              <h3>Today's Impact</h3>
-              <span className="pill">+10% vs last week</span>
+      <div className="impact-container min-vh-100 p-4" style={{ background: '#f6efdf' }}>
+        <div className="container" style={{ maxWidth: '1200px' }}>
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <div className="welcome">
+              <small className="fw-bold d-block text-uppercase" style={{ color: '#7b3a3a', letterSpacing: '1px' }}>WELCOME BACK</small>
+              <h1 className="display-5 fw-bold mb-1" style={{ color: '#5b1b1b' }}>Your Impact</h1>
+              <p className="m-0" style={{ color: '#7b3a3a' }}>Track your performance and work contribution</p>
             </div>
-
-            <div className="stats-row">
-              <div className="stat-box">
-                <small>TASKS</small>
-                <h2>4</h2>
-              </div>
-              <div className="stat-box">
-                <small>HOURS</small>
-                <h2>6.5</h2>
-              </div>
-              <div className="stat-box">
-                <small>SERVICES</small>
-                <h2>3</h2>
-              </div>
-            </div>
+            <Link to="/employee-dashboard" className="btn btn-sm d-md-none text-white fw-bold" style={{ background: '#7b1e2b' }}>Back</Link>
           </div>
 
-          <div className="card">
-            <h3>Monthly Progress</h3>
+          <div className="row g-4">
+            <div className="col-lg-8">
+              <div className="card border-0 shadow-sm p-4 rounded-4 mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                  <h3 className="h4 fw-bold m-0" style={{ color: '#5b1b1b' }}>Today's Impact</h3>
+                  <span className="badge rounded-pill text-dark fw-bold px-3 py-2" style={{ background: '#f3d9a4', color: '#7b1e2b' }}>+10% vs last week</span>
+                </div>
 
-            <div className="circles">
-              <div className="circle">
-                22/30
-                <small>Tasks</small>
+                <div className="row g-3">
+                  <div className="col-4">
+                    <div className="p-3 rounded-4" style={{ background: '#fdf8ef' }}>
+                      <small className="fw-bold d-block mb-2" style={{ color: '#7b3a3a' }}>TASKS</small>
+                      <h2 className="h3 fw-bold m-0" style={{ color: '#7b1e2b' }}>4</h2>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="p-3 rounded-4" style={{ background: '#fdf8ef' }}>
+                      <small className="fw-bold d-block mb-2" style={{ color: '#7b3a3a' }}>HOURS</small>
+                      <h2 className="h3 fw-bold m-0" style={{ color: '#7b1e2b' }}>6.5</h2>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="p-3 rounded-4" style={{ background: '#fdf8ef' }}>
+                      <small className="fw-bold d-block mb-2" style={{ color: '#7b3a3a' }}>SERVICES</small>
+                      <h2 className="h3 fw-bold m-0" style={{ color: '#7b1e2b' }}>3</h2>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="circle">
-                148h
-                <small>Hours</small>
-              </div>
-              <div className="circle">
-                91%
-                <small>On-Time</small>
+
+              <div className="card border-0 shadow-sm p-4 rounded-4 mb-4">
+                <h3 className="h4 fw-bold mb-4" style={{ color: '#5b1b1b' }}>Monthly Progress</h3>
+
+                <div className="d-flex justify-content-around py-3">
+                  <div className="text-center rounded-circle d-flex flex-column align-items-center justify-content-center fw-bold" style={{ width: '90px', height: '90px', border: '8px solid #7b1e2b', color: '#7b1e2b', fontSize: '14px' }}>
+                    22/30
+                    <small style={{ fontSize: '11px', opacity: 0.8 }}>Tasks</small>
+                  </div>
+                  <div className="text-center rounded-circle d-flex flex-column align-items-center justify-content-center fw-bold" style={{ width: '90px', height: '90px', border: '8px solid #7b1e2b', color: '#7b1e2b', fontSize: '14px' }}>
+                    148h
+                    <small style={{ fontSize: '11px', opacity: 0.8 }}>Hours</small>
+                  </div>
+                  <div className="text-center rounded-circle d-flex flex-column align-items-center justify-content-center fw-bold" style={{ width: '90px', height: '90px', border: '8px solid #7b1e2b', color: '#7b1e2b', fontSize: '14px' }}>
+                    91%
+                    <small style={{ fontSize: '11px', opacity: 0.8 }}>On-Time</small>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <small className="fw-bold d-block mb-2 text-muted">Overall Performance</small>
+                  <div className="progress" style={{ height: '10px', background: '#f3d9a4', borderRadius: '10px' }}>
+                    <div className="progress-bar rounded-pill" role="progressbar" style={{ width: '78%', background: '#7b1e2b' }}></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="progress">
-              <small>Overall Performance</small>
-              <div className="progress-bar">
-                <div className="progress-fill"></div>
-              </div>
-            </div>
-          </div>
+            <div className="col-lg-4">
+              <div className="card border-0 shadow-sm p-4 rounded-4 mb-4">
+                <h3 className="h5 fw-bold mb-4" style={{ color: '#5b1b1b' }}>Your Contribution</h3>
 
-          <div className="card">
-            <h3>Your Contribution This Month</h3>
+                <div className="p-4 rounded-4 mb-3 text-center" style={{ background: '#fdf8ef' }}>
+                  <h2 className="display-4 fw-bold m-0" style={{ color: '#7b1e2b' }}>38</h2>
+                  <p className="m-0 fw-bold small text-muted">Services Completed</p>
+                </div>
 
-            <div className="impact-metric">
-              <h2>38</h2>
-              <p>Services Completed</p>
-            </div>
+                <div className="row g-3">
+                  <div className="col-6">
+                    <div className="p-3 rounded-4 text-center" style={{ background: '#fdf8ef' }}>
+                      <h2 className="h4 fw-bold m-0" style={{ color: '#7b1e2b' }}>12</h2>
+                      <p className="m-0 small text-muted">On-Time</p>
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <div className="p-3 rounded-4 text-center" style={{ background: '#fdf8ef' }}>
+                      <h2 className="h4 fw-bold m-0" style={{ color: '#7b1e2b' }}>1</h2>
+                      <p className="m-0 small text-muted">Late Task</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="stats-row">
-              <div className="impact-metric">
-                <h2>12</h2>
-                <p>On-Time Days</p>
-              </div>
-              <div className="impact-metric">
-                <h2>1</h2>
-                <p>Late Task</p>
-              </div>
-            </div>
-          </div>
+              <div className="card border-0 shadow-sm p-4 rounded-4">
+                <h3 className="h5 fw-bold mb-2" style={{ color: '#5b1b1b' }}>Stability Journey</h3>
+                <p className="small text-muted mb-4">Growth based on punctuality & consistency</p>
 
-          <div className="card">
-            <h3>Stability Journey</h3>
-            <p>Growth based on punctuality & consistency</p>
-
-            <div className="levels">
-              <div className="level">
-                <div className="dot"></div>
-                <p>Starter</p>
-              </div>
-              <div className="level">
-                <div className="dot"></div>
-                <p>Reliable</p>
-              </div>
-              <div className="level">
-                <div className="dot"></div>
-                <p>Consistent</p>
-              </div>
-              <div className="level">
-                <div className="dot inactive"></div>
-                <p>Hero</p>
+                <div className="d-flex justify-content-between text-center pt-2">
+                  <div>
+                    <div className="mx-auto mb-2 rounded-circle" style={{ width: '18px', height: '18px', background: '#7b1e2b' }}></div>
+                    <small className="fw-bold" style={{ fontSize: '12px' }}>Starter</small>
+                  </div>
+                  <div>
+                    <div className="mx-auto mb-2 rounded-circle" style={{ width: '18px', height: '18px', background: '#7b1e2b' }}></div>
+                    <small className="fw-bold" style={{ fontSize: '12px' }}>Reliable</small>
+                  </div>
+                  <div>
+                    <div className="mx-auto mb-2 rounded-circle" style={{ width: '18px', height: '18px', background: '#7b1e2b' }}></div>
+                    <small className="fw-bold" style={{ fontSize: '12px' }}>Consistent</small>
+                  </div>
+                  <div>
+                    <div className="mx-auto mb-2 rounded-circle" style={{ width: '18px', height: '18px', background: '#f3d9a4' }}></div>
+                    <small className="fw-bold text-muted" style={{ fontSize: '12px' }}>Hero</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

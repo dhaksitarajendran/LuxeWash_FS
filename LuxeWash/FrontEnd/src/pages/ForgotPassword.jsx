@@ -16,104 +16,35 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <style>{`
-        .forgot-wrapper {
-          background: #f6efdf;
-          min-height: calc(100vh - 60px);
-          padding: 40px 20px;
-        }
-
-        .forgot-container {
-          max-width: 520px;
-          margin: 0 auto;
-        }
-
-        .back-link {
-          color: #7b1e2b;
-          font-weight: 600;
-          margin-bottom: 14px;
-          display: inline-block;
-          text-decoration: none;
-        }
-
-        .forgot-title {
-          font-size: 36px;
-          color: #7b1e2b;
-          margin: 0 0 30px;
-        }
-
-        .forgot-card {
-          background: #f3e9cf;
-          padding: 36px 32px;
-          border-radius: 18px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-
-        .forgot-card label {
-          display: block;
-          font-weight: 600;
-          color: #7b1e2b;
-          margin-bottom: 10px;
-        }
-
-        .input-box {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #f6efdf;
-          padding: 12px 14px;
-          border-radius: 12px;
-          margin-bottom: 26px;
-        }
-
-        .input-box input {
-          border: none;
-          background: transparent;
-          outline: none;
-          width: 100%;
-          font-size: 15px;
-        }
-
-        .reset-btn {
-          width: 100%;
-          background: #7b1e2b;
-          color: #f6efdf;
-          border: none;
-          padding: 14px;
-          font-size: 18px;
-          font-weight: 600;
-          border-radius: 14px;
-          cursor: pointer;
-        }
-
-        .reset-btn:hover {
-          opacity: 0.9;
-        }
-      `}</style>
-
-      <div className="forgot-wrapper">
-        <div className="forgot-container">
-          <Link to="/login" className="back-link">
+      <div className="forgot-wrapper min-vh-100 d-flex justify-content-center pt-5 px-3" style={{ background: '#f6efdf' }}>
+        <div className="forgot-container w-100" style={{ maxWidth: '520px' }}>
+          <Link to="/login" className="back-link d-inline-block text-decoration-none fw-bold mb-3" style={{ color: '#7b1e2b' }}>
             ← Back
           </Link>
 
-          <h1 className="forgot-title">Forgot Password</h1>
+          <h1 className="forgot-title mb-4" style={{ color: '#7b1e2b', fontSize: '36px' }}>Forgot Password</h1>
 
-          <div className="forgot-card">
-            <label>Email Address</label>
+          <div className="forgot-card card border-0 shadow-sm p-4 p-md-5" style={{ background: '#f3e9cf', borderRadius: '18px' }}>
+            <label className="fw-bold mb-2 d-block" style={{ color: '#7b1e2b' }}>Email Address</label>
 
-            <div className="input-box">
-              ✉
+            <div className="input-box d-flex align-items-center gap-2 mb-4 p-3 rounded-3" style={{ background: '#f6efdf' }}>
+              <span className="fs-5">✉</span>
               <input
                 type="email"
                 placeholder="john@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') handleSend(); }}
+                className="w-100 border-0 bg-transparent"
+                style={{ outline: 'none', fontSize: '15px' }}
               />
             </div>
 
-            <button className="reset-btn" onClick={handleSend}>
+            <button
+              className="reset-btn btn w-100 py-3 fs-5 fw-bold rounded-3"
+              style={{ background: '#7b1e2b', color: '#f6efdf', border: 'none' }}
+              onClick={handleSend}
+            >
               Send Reset Link
             </button>
           </div>

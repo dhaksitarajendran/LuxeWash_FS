@@ -48,105 +48,40 @@ function Services() {
 
   return (
     <>
-      <section className="services">
-        <h2>Our Services</h2>
-        <h1>Premium Care for Your Vehicle</h1>
-        <p>
-          From quick washes to full detailing, we offer comprehensive car care solutions.
-        </p>
+      <section className="services py-5" style={{ background: '#f6efdf' }}>
+        <div className="container text-center">
+          <h2 className="mb-2" style={{ color: '#6b0f14' }}>Our Services</h2>
+          <h1 className="mb-4 fw-bold" style={{ fontSize: '42px', color: '#6b0f14' }}>Premium Care for Your Vehicle</h1>
+          <p className="mb-5 lead">
+            From quick washes to full detailing, we offer comprehensive car care solutions.
+          </p>
 
-        <div className="grid">
-          {services.map((s, i) => (
-            <div className="card" key={i}>
-              <img src={s.img} alt={s.title} />
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-              <span>From {s.price}</span>
-             <Link to="/booknow" className="book-now-btn">Book Now</Link>
-
-            </div>
-          ))}
+          <div className="row g-4">
+            {services.map((s, i) => (
+              <div className="col-md-6 col-lg-4" key={i}>
+                <div className="card h-100 border-0 shadow-sm text-start p-4" style={{ background: '#f9f0da', borderRadius: '20px' }}>
+                  <div className="icon-box d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '60px', height: '60px', background: '#e8d4b0', borderRadius: '12px' }}>
+                    <img src={s.img} alt={s.title} style={{ height: '30px', width: '30px', objectFit: 'contain' }} />
+                  </div>
+                  <h3 className="h4 fw-bold mb-2" style={{ color: '#6b0f14' }}>{s.title}</h3>
+                  <p className="mb-3 flex-grow-1">{s.desc}</p>
+                  <div className="d-flex justify-content-between align-items-center mt-auto">
+                    <span className="fw-bold" style={{ color: '#6b0f14' }}>From {s.price}</span>
+                    <Link to="/booknow" className="btn fw-bold rounded-pill px-3 py-1" style={{ background: '#6b0f14', color: 'white' }}>Book Now</Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+
+        <style>{`
+          .btn:hover {
+            background-color: #4a0c0c !important;
+            color: white !important;
+          }
+        `}</style>
       </section>
-
-      <style>{`
-        .services {
-          padding: 80px;
-          background: #f6efdf;
-          text-align: center;
-        }
-          .services h2{
-           color: #6b0f14;
-      }
-
-      .services h1{
- font-size: 42px;
-          color: #6b0f14;
-
-      }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin-top: 50px;
-        }
-
-        .book-now-btn {
-  display: inline-block;
-  background: #6b0f14;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  margin-left : 125px;
-}
-
-.book-now-btn:hover {
-  background: #4a0c0c;
-}
-
-        .card {
-          background: #f9f0da;
-          padding: 30px;
-          border-radius: 20px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-          text-align: left;
-        }
-          .card img {
-  height: 40px;
-  margin-bottom: 15px;
-  border-radius: 10px;  
-}
-
-
-        .card img {
-          height: 40px;
-          margin-bottom: 15px;
-        }
-
-        .card h3 {
-          color: #6b0f14;
-        }
-
-        .card span {
-          font-weight: bold;
-          color: #6b0f14;
-        }
-
-        .card button {
-          float: right;
-          border: 2px solid #6b0f14;
-          background: transparent;
-          padding: 8px 16px;
-          border-radius: 20px;
-          cursor: pointer;
-          Color: #6b0f14;
-          font-weight: bold;
-    
-        }
-      `}</style>
     </>
   );
 }

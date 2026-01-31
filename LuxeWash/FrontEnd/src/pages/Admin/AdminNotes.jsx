@@ -1,41 +1,58 @@
 import React, { useState } from "react";
 
-export default function AdminNotes({ feedbacks = [], onAdd = () => {}, onToggleRespond = () => {} }) {
+export default function AdminNotes({ feedbacks = [], onAdd = () => { }, onToggleRespond = () => { } }) {
   const [text, setText] = useState("");
 
   return (
     <div>
       <textarea
+        className="form-control mb-2"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter note or feedback..."
-        style={{ width: "100%", minHeight: 80, padding: 10, borderRadius: 8, border: "1px solid #eee" }}
+        style={{ minHeight: '80px', borderRadius: '8px' }}
       />
-      <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+      <div className="d-flex gap-2">
         <button
+          className="btn text-white fw-bold btn-sm px-3"
           onClick={() => {
             if (!text) return;
             onAdd(text);
             setText("");
           }}
-          style={{ background: "#7b1e2b", color: "#fff", border: "none", padding: "8px 12px", borderRadius: 8, fontWeight: 700 }}
+          style={{ background: "#7b1e2b", borderRadius: '8px' }}
         >
           Add Note
         </button>
 
-        <button onClick={() => setText("")} style={{ background: "#f3d9a4", color: "#7b1e2b", border: "none", padding: "8px 12px", borderRadius: 8, fontWeight: 700 }}>
+        <button
+          className="btn btn-sm fw-bold px-3"
+          onClick={() => setText("")}
+          style={{ background: "#f3d9a4", color: "#7b1e2b", borderRadius: '8px' }}
+        >
           Clear
         </button>
       </div>
 
-      <div style={{ marginTop: 12 }}>
-        {feedbacks.length === 0 && <p style={{ color: "#7b3a3a" }}>No notes yet.</p>}
+      <div className="mt-3 d-flex flex-column gap-2">
+        {feedbacks.length === 0 && <p className="text-muted small">No notes yet.</p>}
         {feedbacks.map((f) => (
-          <div key={f.id} style={{ padding: 10, borderRadius: 8, border: "1px solid #f0e6d9", marginBottom: 10 }}>
-            <div style={{ color: "#5b1b1b", fontWeight: 700 }}>{f.text}</div>
-            <div style={{ fontSize: 12, color: "#7b3a3a", marginTop: 6 }}>{f.when}</div>
-            <div style={{ marginTop: 8 }}>
-              <button onClick={() => onToggleRespond(f.id)} style={{ padding: "6px 10px", borderRadius: 8, border: "none", background: f.responded ? "#f3d9a4" : "#7b1e2b", color: f.responded ? "#7b1e2b" : "#fff", fontWeight: 700 }}>{f.responded ? "Responded" : "Mark Responded"}</button>
+          <div key={f.id} className="p-3 border rounded-3 bg-white">
+            <div className="fw-bold" style={{ color: "#5b1b1b" }}>{f.text}</div>
+            <div className="text-muted small mt-1">{f.when}</div>
+            <div className="mt-2">
+              <button
+                onClick={() => onToggleRespond(f.id)}
+                className="btn btn-sm fw-bold border-0"
+                style={{
+                  background: f.responded ? "#f3d9a4" : "#7b1e2b",
+                  color: f.responded ? "#7b1e2b" : "#fff",
+                  borderRadius: '8px',
+                  fontSize: '12px'
+                }}
+              >
+                {f.responded ? "Responded" : "Mark Responded"}
+              </button>
             </div>
           </div>
         ))}

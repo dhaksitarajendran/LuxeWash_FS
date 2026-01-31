@@ -6,242 +6,71 @@ import clockIcon from '../assets/clock.png';
 const Dashboard = () => {
   return (
     <>
-    
-      <style>{`
-        body {
-          margin: 0;
-        }
-
-        .dashboard {
-          background: #f6efdf;
-          min-height: 100vh;
-          padding: 40px;
-          font-family: "Georgia", serif;
-        }
-
-        .welcome-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-        }
-
-        .welcome-text h1 {
-          margin: 0;
-          font-size: 42px;
-          color: #6b4a4a;
-        }
-
-        .welcome-text p {
-          margin-top: 6px;
-          color: #7b1e2b;
-          font-weight: 600;
-        }
-
-        .welcome-actions button {
-          margin-left: 12px;
-        }
-
-        .btn-outline {
-          background: transparent;
-          border: 1.5px solid #7b1e2b;
-          color: #7b1e2b;
-          padding: 10px 18px;
-          border-radius: 10px;
-          font-weight: 600;
-          cursor: pointer;
-        }
-
-        .btn-primary {
-          background: #7b1e2b;
-          border: none;
-          color: #fff;
-          padding: 10px 20px;
-          border-radius: 10px;
-          font-weight: 600;
-          cursor: pointer;
-        }
-
-        .banner {
-          background: #7b1e2b;
-          border-radius: 18px;
-          padding: 28px;
-          color: #f6efdf;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-        }
-
-        .banner-left {
-          display: flex;
-          align-items: center;
-        }
-
-        .gift-icon {
-          background: rgba(255,255,255,0.15);
-          border-radius: 14px;
-          padding: 18px;
-          margin-right: 18px;
-          font-size: 24px;
-        }
-
-        .banner h2 {
-          margin: 0;
-        }
-
-        .banner p {
-          margin-top: 6px;
-          font-size: 14px;
-        }
-
-        .btn-light {
-          background: #f6efdf;
-          color: #7b1e2b;
-          padding: 12px 22px;
-          border-radius: 16px;
-          font-weight: 700;
-          border: none;
-          cursor: pointer;
-        }
-
-        .content {
-          display: grid;
-          grid-template-columns: 2fr 1fr;
-          gap: 26px;
-        }
-
-        .card {
-          background: #fff;
-          border-radius: 16px;
-          padding: 24px;
-        }
-.gift-icon img {
-  width: 36px;
-  height: 36px;
-}
-
-.empty-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 14px;
-  opacity: 0.6;
-}
-
-.map-icon {
-  width: 40px;
-  height: 40px;
-  opacity: 0.6;
-}
-
-        .card h3 {
-          margin-top: 0;
-          color: #7b1e2b;
-        }
-
-        .empty {
-          text-align: center;
-          padding: 50px 0;
-          color: #c8a4a4;
-        }
-
-        .empty button {
-          margin-top: 16px;
-        }
-
-        .map {
-          height: 160px;
-          background: #fffaedf7;
-          padding: 40px;
-          border-radius: 14px;
-          margin-bottom: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #c8a4a4;
-          font-size: 26px;
-        }
-
-        .address {
-          font-size: 14px;
-          color: #7b1e2b;
-          font-weight: 600;
-        }
-
-        .directions {
-          margin-top: 18px;
-          width: 100%;
-        }
-      `}</style>
-
-      <div className="dashboard">
-        <div className="welcome-row">
+      <div className="dashboard min-vh-100 p-4" style={{ background: '#f6efdf', fontFamily: '"Georgia", serif' }}>
+        <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
           <div className="welcome-text">
-            <h1>Welcome,</h1>
-            <p>Get started by booking your first car wash service.</p>
+            <h1 className="m-0 fw-bold" style={{ fontSize: '42px', color: '#6b4a4a' }}>Welcome,</h1>
+            <p className="mt-1 mb-0 fw-bold" style={{ color: '#7b1e2b' }}>Get started by booking your first car wash service.</p>
           </div>
 
-          <div className="welcome-actions">
-            <button className="btn-outline">Notification</button>
-            <button className="btn-primary">New Booking</button>
+          <div className="welcome-actions d-flex gap-2">
+            <button className="btn fw-bold px-3 py-2 rounded-3" style={{ background: 'transparent', border: '1.5px solid #7b1e2b', color: '#7b1e2b' }}>Notification</button>
+            <button className="btn fw-bold px-3 py-2 rounded-3 text-white" style={{ background: '#7b1e2b', border: 'none' }}>New Booking</button>
           </div>
         </div>
 
-     
-        <div className="banner">
-          <div className="banner-left">
-           <div className="gift-icon">
-  <img src={giftIcon} alt="Gift" />
-</div>
-
+        <div className="banner p-4 rounded-4 text-white d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3" style={{ background: '#7b1e2b' }}>
+          <div className="d-flex align-items-center gap-3">
+            <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.15)' }}>
+              <img src={giftIcon} alt="Gift" style={{ width: '36px', height: '36px' }} />
+            </div>
             <div>
-              <h2>Welcome to LuxeWash!</h2>
-              <p>
+              <h2 className="h4 m-0 fw-bold">Welcome to LuxeWash!</h2>
+              <p className="mt-1 mb-0 small opacity-75">
                 Book your first service and get 20% off. Start earning loyalty
                 points today!
               </p>
             </div>
           </div>
-          <button className="btn-light">Book Your First Wash</button>
+          <button className="btn fw-bold px-4 py-2 rounded-4" style={{ background: '#f6efdf', color: '#7b1e2b', border: 'none' }}>Book Your First Wash</button>
         </div>
 
-        <div className="content">
-       
-          <div>
-            <div className="card" style={{ marginBottom: "24px" }}>
-              <h3>Upcoming Bookings</h3>
-              <div className="empty">
-  <img src={carIcon} alt="Car" className="empty-icon" />
-  <p>No upcoming bookings</p>
-  <p>Book your first service to get started!</p>
-  <button className="btn-primary">Book Now</button>
-</div>
-
+        <div className="row g-4">
+          <div className="col-lg-8">
+            <div className="card border-0 rounded-4 p-4 mb-4 shadow-sm">
+              <h3 className="h5 fw-bold mb-4" style={{ color: '#7b1e2b' }}>Upcoming Bookings</h3>
+              <div className="text-center py-5" style={{ color: '#c8a4a4' }}>
+                <img src={carIcon} alt="Car" className="mb-3 opacity-50" style={{ width: '64px', height: '64px' }} />
+                <p className="mb-1">No upcoming bookings</p>
+                <p className="mb-3">Book your first service to get started!</p>
+                <button className="btn fw-bold px-3 py-2 rounded-3 text-white" style={{ background: '#7b1e2b', border: 'none' }}>Book Now</button>
+              </div>
             </div>
 
-            <div className="card">
-              <h3>Recent History</h3>
-             <div className="empty">
-  <img src={clockIcon} alt="Service History" className="empty-icon" />
-  <p>No service history yet</p>
-  <p>Your completed services will appear here.</p>
-</div>
-
+            <div className="card border-0 rounded-4 p-4 shadow-sm">
+              <h3 className="h5 fw-bold mb-4" style={{ color: '#7b1e2b' }}>Recent History</h3>
+              <div className="text-center py-5" style={{ color: '#c8a4a4' }}>
+                <img src={clockIcon} alt="Service History" className="mb-3 opacity-50" style={{ width: '64px', height: '64px' }} />
+                <p className="mb-1">No service history yet</p>
+                <p className="mb-0">Your completed services will appear here.</p>
+              </div>
             </div>
           </div>
 
-          <div className="card">
-            <h3>Our Location</h3>
-           <div className="map">
-  <img src={locationIcon} alt="Location" className="map-icon" />
-</div>
+          <div className="col-lg-4">
+            <div className="card border-0 rounded-4 p-4 shadow-sm h-100">
+              <h3 className="h5 fw-bold mb-4" style={{ color: '#7b1e2b' }}>Our Location</h3>
+              <div className="d-flex align-items-center justify-content-center rounded-3 mb-3" style={{ height: '160px', background: '#fffaedf7' }}>
+                <img src={locationIcon} alt="Location" className="opacity-50" style={{ width: '40px', height: '40px' }} />
+              </div>
 
-            <p className="address">
-              No. 12, Main Road,<br />
-              Anna Nagar, Coimbatore – 625020,<br />
-              Tamil Nadu.
-            </p>
-            <button className="btn-outline directions">Get Directions</button>
+              <p className="fw-bold mb-3 small" style={{ color: '#7b1e2b' }}>
+                No. 12, Main Road,<br />
+                Anna Nagar, Coimbatore – 625020,<br />
+                Tamil Nadu.
+              </p>
+              <button className="btn w-100 fw-bold px-3 py-2 rounded-3 mt-auto" style={{ background: 'transparent', border: '1.5px solid #7b1e2b', color: '#7b1e2b' }}>Get Directions</button>
+            </div>
           </div>
         </div>
       </div>

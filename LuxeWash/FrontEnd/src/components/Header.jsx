@@ -1,88 +1,45 @@
 import LuxeLogo from "../assets/LuxeLogo.png";
-import { NavLink, Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-scroll";
 
 function Header() {
   return (
-    <header className="header">
-      <div className="brand-row">
-        <img src={LuxeLogo} alt="LuxeWash Logo" />
+    <header className="header d-flex align-items-center justify-content-between px-4 py-2" style={{ background: 'linear-gradient(to left, #4a0c0c, #6b0f14)', height: '55px' }}>
+      <div className="brand-row d-flex align-items-center gap-2">
+        <img src={LuxeLogo} alt="LuxeWash Logo" style={{ height: '32px', width: '32px' }} />
         <div className="brand-text">
-          <h3>LuxeWash</h3>
-          <span>Premium Car Care</span>
+          <h3 className="m-0" style={{ fontFamily: '"Satisfy"', color: '#f6efdf', fontSize: '20px' }}>LuxeWash</h3>
+          <span className="d-block" style={{ fontSize: '11px', color: '#f3d9a4', marginTop: '-4px' }}>Premium Car Care</span>
         </div>
       </div>
 
-      <nav className="nav">
-        <NavLink to="/" end className="nav-link">
+      <nav className="nav d-flex justify-content-center gap-5">
+        <Link activeClass="active" to="home" spy={true} smooth={true} offset={-70} duration={500} className="nav-link text-decoration-none fw-medium position-relative" style={{ color: '#f3d9a4', fontSize: '20px', cursor: 'pointer' }}>
           Home
-        </NavLink>
-        <NavLink to="/services" className="nav-link">
+        </Link>
+        <Link activeClass="active" to="services" spy={true} smooth={true} offset={-70} duration={500} className="nav-link text-decoration-none fw-medium position-relative" style={{ color: '#f3d9a4', fontSize: '20px', cursor: 'pointer' }}>
           Services
-        </NavLink>
-        <NavLink to="/pricing" className="nav-link">
+        </Link>
+        <Link activeClass="active" to="pricing" spy={true} smooth={true} offset={-70} duration={500} className="nav-link text-decoration-none fw-medium position-relative" style={{ color: '#f3d9a4', fontSize: '20px', cursor: 'pointer' }}>
           Pricing
-        </NavLink>
-        <NavLink to="/contact" className="nav-link">
+        </Link>
+        <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-70} duration={500} className="nav-link text-decoration-none fw-medium position-relative" style={{ color: '#f3d9a4', fontSize: '20px', cursor: 'pointer' }}>
           Contact
-        </NavLink>
+        </Link>
       </nav>
 
-      <div className="auth">
-        <Link to="/login" className="login">
+      <div className="auth d-flex align-items-center gap-3">
+        <RouterLink to="/login" className="login text-decoration-none" style={{ color: '#f3d9a4', fontSize: '18px' }}>
           Login
-        </Link>
-        <Link to="/signup">
-          <button className="register">Register</button>
-        </Link>
+        </RouterLink>
+        <RouterLink to="/signup">
+          <button className="register btn border-0 fw-bold" style={{ background: '#f3d9a4', color: '#6b0f14', padding: '7px 18px', borderRadius: '10px' }}>Register</button>
+        </RouterLink>
       </div>
 
       <style>{`
-        .header {
-          background: linear-gradient(to left, #4a0c0c, #6b0f14);
-          display: grid;
-          grid-template-columns: auto 1fr auto;
-          align-items: center;
-          padding: 10px 40px;
-          height: 55px;
-        }
-
-        .brand-row {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .brand-row img {
-          height: 32px;
-          width: 32px;
-        }
-
-        .brand-text h3 {
-          margin: 0;
-          font-family: "Satisfy";
-          color: #f6efdf;
-          font-size: 20px;
-        }
-
-        .brand-text span {
-          font-size: 11px;
-          color: #f3d9a4;
-          margin-top: -4px;
-          display: block;
-        }
-
-        .nav {
-          display: flex;
-          justify-content: center;
-          gap: 90px;
-        }
-
-        .nav-link {
-          position: relative;
-          text-decoration: none;
-          color: #f3d9a4;
-          font-size: 20px;
-          font-weight: 500;
+        .register:hover {
+          background-color: #ffe4b5 !important;
         }
 
         .nav-link::after {
@@ -93,37 +50,11 @@ function Header() {
           width: 0;
           height: 2px;
           background: #f5c16c;
-          
+          transition: width 0.3s;
         }
 
         .nav-link.active::after {
           width: 100%;
-        }
-
-        .auth {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .login {
-          color: #f3d9a4;
-          text-decoration: none;
-          font-size: 18px;
-        }
-
-        .register {
-          background: #f3d9a4;
-          border: none;
-          padding: 7px 18px;
-          border-radius: 10px;
-          color: #6b0f14;
-          font-weight: bold;
-          cursor: pointer;
-        }
-
-        .register:hover {
-          background: #ffe4b5;
         }
       `}</style>
     </header>

@@ -42,7 +42,7 @@ function Login() {
           lastName: response.lastName,
           role: response.role
         }));
-        
+
 
         window.location.href = '/';
       } else {
@@ -56,20 +56,21 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <h1>SpeedShine</h1>
-          <p>{isLogin ? 'Welcome back!' : 'Create your account'}</p>
+    <div className="login-container d-flex align-items-center justify-content-center min-vh-100">
+      <div className="login-card card border-0 shadow-lg p-4 p-md-5 w-100" style={{ maxWidth: '450px' }}>
+        <div className="login-header text-center mb-4">
+          <h1 className="fw-bold mb-2">SpeedShine</h1>
+          <p className="text-secondary mb-0">{isLogin ? 'Welcome back!' : 'Create your account'}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleSubmit} className="login-form d-flex flex-column gap-3">
           {!isLogin && (
             <>
               <div className="form-group">
-                <label htmlFor="firstName">First Name</label>
+                <label htmlFor="firstName" className="form-label fw-medium text-dark">First Name</label>
                 <input
                   type="text"
+                  className="form-control form-control-lg"
                   id="firstName"
                   name="firstName"
                   value={formData.firstName}
@@ -79,9 +80,10 @@ function Login() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="lastName" className="form-label fw-medium text-dark">Last Name</label>
                 <input
                   type="text"
+                  className="form-control form-control-lg"
                   id="lastName"
                   name="lastName"
                   value={formData.lastName}
@@ -94,9 +96,10 @@ function Login() {
           )}
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="form-label fw-medium text-dark">Email</label>
             <input
               type="email"
+              className="form-control form-control-lg"
               id="email"
               name="email"
               value={formData.email}
@@ -107,9 +110,10 @@ function Login() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="form-label fw-medium text-dark">Password</label>
             <input
               type="password"
+              className="form-control form-control-lg"
               id="password"
               name="password"
               value={formData.password}
@@ -120,19 +124,19 @@ function Login() {
             />
           </div>
 
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="alert alert-danger p-2 mb-0 border-0">{error}</div>}
 
-          <button type="submit" className="submit-button" disabled={loading}>
+          <button type="submit" className="submit-button btn w-100 mt-2" disabled={loading}>
             {loading ? 'Processing...' : isLogin ? 'Login' : 'Register'}
           </button>
         </form>
 
-        <div className="login-footer">
-          <p>
+        <div className="login-footer text-center mt-3">
+          <p className="text-secondary small mb-0">
             {isLogin ? "Don't have an account? " : "Already have an account? "}
             <button
               type="button"
-              className="toggle-button"
+              className="toggle-button btn btn-link p-0 text-decoration-underline align-baseline"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setError('');
@@ -154,4 +158,3 @@ function Login() {
 }
 
 export default Login;
-

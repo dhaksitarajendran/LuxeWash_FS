@@ -11,206 +11,101 @@ const Settings = () => {
 
   return (
     <>
-      <style>{`
-        .settings-wrapper {
-          background: #f6efdf;
-          min-height: calc(100vh - 60px);
-          padding: 40px 20px;
-        }
+      <div className="settings-wrapper vh-100 p-2 d-flex flex-column" style={{ background: '#f6efdf', overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <style>
+          {`
+            .settings-wrapper::-webkit-scrollbar {
+              display: none;
+            }
+          `}
+        </style>
+        <div className="container h-100 d-flex flex-column" style={{ maxWidth: '900px' }}>
+          <div className="mb-2">
+            <Link to="/dashboard" className="text-decoration-none fw-bold fs-6" style={{ color: '#7b1e2b' }}>
+              ← Back to Dashboard
+            </Link>
+          </div>
 
-        .settings-container {
-          max-width: 900px;
-          margin: auto;
-        }
+          <h2 className="fw-bold mb-3" style={{ color: '#7b1e2b' }}>Settings</h2>
 
-        .back-link {
-          color: #7b1e2b;
-          font-weight: 600;
-          text-decoration: none;
-          display: inline-block;
-          margin-bottom: 14px;
-        }
+          <div className="settings-card flex-grow-1 p-3 p-md-4 rounded-4 text-white shadow-sm d-flex flex-column justify-content-center" style={{ background: 'linear-gradient(180deg, #7b0015, #5a000f)' }}>
 
-        .settings-title {
-          font-size: 44px;
-          color: #7b1e2b;
-          margin-bottom: 26px;
-        }
+            <div className="section mb-3">
+              <h3 className="h5 fw-bold d-flex align-items-center gap-2 mb-1">
+                <span>🔔</span> Notifications
+              </h3>
+              <p className="small opacity-75 mb-3">Choose how you want to be notified</p>
 
-        .settings-card {
-          background: linear-gradient(180deg, #7b0015, #5a000f);
-          border-radius: 22px;
-          padding: 36px;
-          color: #f6efdf;
-        }
-
-        .section {
-          margin-bottom: 36px;
-        }
-
-        .section h3 {
-          margin: 0;
-          font-size: 24px;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .section p {
-          margin: 6px 0 18px;
-          color: #f3d9a4;
-          font-size: 14px;
-        }
-
-        .setting-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 22px;
-        }
-
-        .setting-text h4 {
-          margin: 0;
-          font-size: 16px;
-        }
-
-        .setting-text span {
-          font-size: 13px;
-          color: #f3d9a4;
-        }
-
-        /* Toggle */
-        .switch {
-          position: relative;
-          width: 46px;
-          height: 26px;
-        }
-
-        .switch input {
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #4a0c0c;
-          border-radius: 26px;
-          transition: 0.3s;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 20px;
-          width: 20px;
-          left: 3px;
-          bottom: 3px;
-          background-color: #f6efdf;
-          border-radius: 50%;
-          transition: 0.3s;
-        }
-
-        input:checked + .slider {
-          background-color: #f3d9a4;
-        }
-
-        input:checked + .slider:before {
-          transform: translateX(20px);
-          background-color: #7b1e2b;
-        }
-
-        select {
-          width: 100%;
-          background: transparent;
-          border: 1px solid #f3d9a4;
-          padding: 12px 14px;
-          border-radius: 10px;
-          color: #f6efdf;
-          font-size: 15px;
-          outline: none;
-        }
-
-        option {
-          color: #000;
-        }
-      `}</style>
-
-      <div className="settings-wrapper">
-        <div className="settings-container">
-          <Link to="/dashboard" className="back-link">
-            ← Back to Dashboard
-          </Link>
-
-          <h1 className="settings-title">Settings</h1>
-
-          <div className="settings-card">
-
-            <div className="section">
-              <h3>🔔 Notifications</h3>
-              <p>Choose how you want to be notified</p>
-
-              {[
-                ["Email Notifications", "Receive booking confirmations and updates via email", email, setEmail],
-                ["SMS Notifications", "Get text messages for appointment reminders", sms, setSms],
-                ["Push Notifications", "Receive push notifications on your device", push, setPush],
-                ["Marketing Emails", "Receive promotions and special offers", marketing, setMarketing],
-              ].map(([title, desc, state, setter], i) => (
-                <div className="setting-row" key={i}>
-                  <div className="setting-text">
-                    <h4>{title}</h4>
-                    <span>{desc}</span>
+              <div className="row g-2">
+                {[
+                  ["Email Notifications", "Receive booking confirmations via email", email, setEmail],
+                  ["SMS Notifications", "Get text messages for reminders", sms, setSms],
+                  ["Push Notifications", "Receive push notifications", push, setPush],
+                  ["Marketing Emails", "Receive promotions", marketing, setMarketing],
+                ].map(([title, desc, state, setter], i) => (
+                  <div className="col-md-6" key={i}>
+                    <div className="d-flex justify-content-between align-items-center bg-black bg-opacity-10 p-2 rounded">
+                      <div className="me-2">
+                        <h4 className="fw-bold m-0" style={{ fontSize: '0.9rem' }}>{title}</h4>
+                        <span className="small opacity-75" style={{ fontSize: '0.75rem' }}>{desc}</span>
+                      </div>
+                      <div className="form-check form-switch m-0">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          checked={state}
+                          onChange={() => setter(!state)}
+                          style={{ width: '40px', height: '20px', cursor: 'pointer', backgroundColor: state ? '#f3d9a4' : '#4a0c0c', borderColor: 'transparent', backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='${state ? '%237b1e2b' : '%23f6efdf'}'/%3e%3c/svg%3e")` }}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <label className="switch">
-                    <input
-                      type="checkbox"
-                      checked={state}
-                      onChange={() => setter(!state)}
-                    />
-                    <span className="slider"></span>
-                  </label>
-                </div>
-              ))}
-            </div>
-
-           
-            <div className="section">
-              <h3>🌙 Appearance</h3>
-              <p>Customize how the app looks</p>
-
-              <div className="setting-row">
-                <div className="setting-text">
-                  <h4>Dark Mode</h4>
-                  <span>Use dark theme across the app</span>
-                </div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={darkMode}
-                    onChange={() => setDarkMode(!darkMode)}
-                  />
-                  <span className="slider"></span>
-                </label>
+                ))}
               </div>
             </div>
-            <div className="section">
-              <h3>🌐 Language & Region</h3>
-              <p>Set your preferred language and region</p>
 
-              <label>Language</label>
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-              >
-                <option>English</option>
-                <option>Tamil</option>
-                <option>Hindi</option>
-              </select>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="section mb-3">
+                  <h3 className="h5 fw-bold mb-1">🌙 Appearance</h3>
+                  <p className="small opacity-75 mb-2">Customize app look</p>
+
+                  <div className="d-flex justify-content-between align-items-center bg-black bg-opacity-10 p-2 rounded">
+                    <div>
+                      <h4 className="fw-bold m-0" style={{ fontSize: '0.9rem' }}>Dark Mode</h4>
+                    </div>
+                    <div className="form-check form-switch m-0">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        checked={darkMode}
+                        onChange={() => setDarkMode(!darkMode)}
+                        style={{ width: '40px', height: '20px', cursor: 'pointer', backgroundColor: darkMode ? '#f3d9a4' : '#4a0c0c', borderColor: 'transparent', backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='${darkMode ? '%237b1e2b' : '%23f6efdf'}'/%3e%3c/svg%3e")` }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <div className="section">
+                  <h3 className="h5 fw-bold mb-1">🌐 Language</h3>
+                  <p className="small opacity-75 mb-2">Set language</p>
+
+                  <select
+                    className="form-select border-0 text-white p-2"
+                    value={language}
+                    onChange={(e) => setLanguage(e.target.value)}
+                    style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid #f3d9a4', color: '#f6efdf' }}
+                  >
+                    <option className="text-dark">English</option>
+                    <option className="text-dark">Tamil</option>
+                    <option className="text-dark">Hindi</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
           </div>

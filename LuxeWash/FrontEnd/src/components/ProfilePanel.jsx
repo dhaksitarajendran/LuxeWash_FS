@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { BiLogOut } from "react-icons/bi";
 
 import avatar from "../assets/avathar.png";
 import settingsIcon from "../assets/settings.png";
@@ -11,159 +12,87 @@ const ProfilePanel = ({ open, onClose }) => {
 
   return (
     <>
-      <style>{`
-        .profile-panel {
-          position: fixed;
-          top: 60px;
-          right: -460px;
-          width: 420px;
-          height: calc(100vh - 60px);
-          background: #ffffff;
-          padding: 32px 28px;
-          box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
-          transition: right 0.35s ease;
-          z-index: 60;
-          border-radius: 0 0 0 24px;
-        }
+      <div
+        className={`position-fixed top-0 end-0 h-100 bg-white shadow-lg d-flex flex-column`}
+        style={{
+          width: '380px',
+          maxWidth: '100%',
+          marginTop: '60px', /* Below navbar */
+          height: 'calc(100vh - 60px)',
+          zIndex: 1050,
+          transform: open ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease-in-out',
+          borderBottomLeftRadius: '24px'
+        }}
+      >
+        <div className="p-4 flex-grow-1 overflow-auto">
+          <div className="text-center mb-4">
+            <img
+              src={avatar}
+              alt="Avatar"
+              className="rounded-circle mb-3 object-fit-cover"
+              style={{ width: '100px', height: '100px' }}
+            />
+            <h4 className="fw-bold mb-2" style={{ color: '#5b1b1b' }}>Dhaksita</h4>
+            <span className="badge rounded-pill px-3 py-2" style={{ background: '#7b1e2b', fontSize: '13px' }}>Welcome!</span>
+          </div>
 
-        .profile-panel.open {
-          right: 0;
-        }
+          <ul className="list-unstyled d-flex flex-column gap-3 mb-4">
+            <li
+              className="d-flex align-items-center gap-3 p-2 rounded-3"
+              style={{ cursor: 'pointer', color: '#5b1b1b', fontWeight: '500' }}
+              onClick={() => { navigate("/edit-profile"); onClose(); }}
+              onMouseOver={(e) => e.currentTarget.style.color = '#7b1e2b'}
+              onMouseOut={(e) => e.currentTarget.style.color = '#5b1b1b'}
+            >
+              <img src={editIcon} alt="Edit Profile" style={{ width: '24px', height: '24px' }} />
+              Edit Profile
+            </li>
 
-        .profile-header {
-          text-align: center;
-          margin-bottom: 32px;
-        }
+            <li
+              className="d-flex align-items-center gap-3 p-2 rounded-3"
+              style={{ cursor: 'pointer', color: '#5b1b1b', fontWeight: '500' }}
+              onClick={() => { navigate("/my-vehicles"); onClose(); }}
+              onMouseOver={(e) => e.currentTarget.style.color = '#7b1e2b'}
+              onMouseOut={(e) => e.currentTarget.style.color = '#5b1b1b'}
+            >
+              <img src={vehicleIcon} alt="My Vehicles" style={{ width: '24px', height: '24px' }} />
+              My Vehicles
+            </li>
 
-        .profile-header img {
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin-bottom: 12px;
-        }
+            <li
+              className="d-flex align-items-center gap-3 p-2 rounded-3"
+              style={{ cursor: 'pointer', color: '#5b1b1b', fontWeight: '500' }}
+              onClick={() => { navigate("/payment-methods"); onClose(); }}
+              onMouseOver={(e) => e.currentTarget.style.color = '#7b1e2b'}
+              onMouseOut={(e) => e.currentTarget.style.color = '#5b1b1b'}
+            >
+              <img src={paymentIcon} alt="Payment Method" style={{ width: '24px', height: '24px' }} />
+              Payment Method
+            </li>
 
-        .profile-header h4 {
-          margin: 8px 0 6px;
-          font-size: 20px;
-          color: #5b1b1b;
-        }
+            <li
+              className="d-flex align-items-center gap-3 p-2 rounded-3"
+              style={{ cursor: 'pointer', color: '#5b1b1b', fontWeight: '500' }}
+              onClick={() => { navigate("/settings"); onClose(); }}
+              onMouseOver={(e) => e.currentTarget.style.color = '#7b1e2b'}
+              onMouseOut={(e) => e.currentTarget.style.color = '#5b1b1b'}
+            >
+              <img src={settingsIcon} alt="Settings" style={{ width: '24px', height: '24px' }} />
+              Settings
+            </li>
+          </ul>
 
-        .badge {
-          display: inline-block;
-          margin-top: 8px;
-          padding: 6px 16px;
-          background: #7b1e2b;
-          color: #ffffff;
-          border-radius: 16px;
-          font-size: 13px;
-          font-weight: 600;
-        }
+          <hr className="my-4 text-muted" />
 
-        .profile-menu {
-          list-style: none;
-          padding: 0;
-          margin: 32px 0;
-        }
-
-        .profile-menu li {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 14px 0;
-          font-size: 16px;
-          font-weight: 500;
-          color: #5b1b1b;
-          cursor: pointer;
-        }
-
-        .profile-menu li img {
-          width: 28px;
-          height: 28px;
-        }
-
-        .profile-menu li:hover {
-          color: #7b1e2b;
-        }
-
-        .profile-panel hr {
-          border: none;
-          border-top: 1px solid #e6e6e6;
-          margin: 22px 0;
-        }
-
-        .logout {
-          background: none;
-          border: none;
-          color: #7b1e2b;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .logout:hover {
-          text-decoration: underline;
-        }
-      `}</style>
-
-      <div className={`profile-panel ${open ? "open" : ""}`}>
-        <div className="profile-header">
-          <img src={avatar} alt="Avatar" />
-          <h4>Dhaksita</h4>
-          <span className="badge">Welcome!</span>
+          <button
+            className="btn w-100 text-start fw-bold d-flex align-items-center gap-3 p-2 rounded-3"
+            style={{ color: '#7b1e2b', background: 'none', border: 'none' }}
+            onClick={() => { navigate("/"); onClose(); }}
+          >
+            <BiLogOut size={24} /> Sign Out
+          </button>
         </div>
-
-        <ul className="profile-menu">
-          <li
-            onClick={() => {
-              navigate("/edit-profile");
-              onClose();
-            }}
-          >
-            <img src={editIcon} alt="Edit Profile" />
-            Edit Profile
-          </li>
-
-          <li
-            onClick={() => {
-              navigate("/my-vehicles");
-              onClose();
-            }}
-          >
-            <img src={vehicleIcon} alt="" />
-            My Vehicles
-          </li>
-
-          <li
-            onClick={() => {
-              navigate("/payment-methods");
-              onClose();
-            }}
-          >
-            <img src={paymentIcon} alt="Payment Method" />
-            Payment Method
-          </li>
-
-          <li
-            onClick={() => {
-              navigate("/settings");
-              onClose();
-            }}
-          >
-            <img src={settingsIcon} alt="" />
-            Settings
-          </li>
-
-        </ul>
-
-        <hr />
-
-        <button className="logout" onClick={onClose}>
-          ↪ Sign Out
-        </button>
       </div>
     </>
   );
